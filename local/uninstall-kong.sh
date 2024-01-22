@@ -4,4 +4,3 @@ then
 else
     echo "Not in KIND context! Exiting"
 fi
-

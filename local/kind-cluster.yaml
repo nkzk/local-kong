@@ -30,4 +30,3 @@ kindV1Alpha4Cluster:
       - containerPort: 30000
         hostPort: 30000
         protocol: TCP
-  
