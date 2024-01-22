@@ -1,4 +1,6 @@
-Running Kong locally using Docker, Kind, and Tilt
+# Introduction
+
+This repository covers how to quickly get Kong up and running in a local kubernetes cluster, and how to configure your services with various plugins.
 
 # Requirements:
   - [Docker](https://docs.docker.com/desktop/install)
@@ -8,19 +10,36 @@ Running Kong locally using Docker, Kind, and Tilt
   - [Helm](https://helm.sh/docs/intro/install/)
   - Make (Pre-installed in most Linux distributions)
 
+# Table of Contents
+- [Introduction](#introduction)
+- [Requirements:](#requirements)
+- [Table of Contents](#table-of-contents)
+- [Set up local environment](#set-up-local-environment)
+  - [Install requirements](#install-requirements)
+  - [Create kind cluster](#create-kind-cluster)
+  - [Install kong](#install-kong)
+  - [Deploy example-service](#deploy-example-service)
+  - [Cleanup](#cleanup)
+- [Guide](#guide)
+  - [The Ingress resource](#the-ingress-resource)
+  - [Plugins](#plugins)
+    - [Example: Rate-limiting](#example-rate-limiting)
+    - [Example: Cors](#example-cors)
+    - [Adding other plugins](#adding-other-plugins)
+    - [Kong Manager (Open-Source version)](#kong-manager-open-source-version)
+  - [Sidenote: TCP/UDP-Ingresses](#sidenote-tcpudp-ingresses)
+- [References:](#references)
 
-**Note:** All `make` commands are ran from root directory.
-
-# Introduction
-
-Kong Ingress Controller is an essential tool for developers who want to manage their Kubernetes Ingress configurations using the powerful Kong API Gateway. 
-
-This repository covers how to quickly get Kong up and running in a local kubernetes cluster, and how to configure your services with various plugins.
 
 
 # Set up local environment
+**Note:** All `make` commands are ran from root directory.
 
-## Start up kind cluster 
+## Install requirements
+
+Start by installing the [Requirements](#requirements)
+
+## Create kind cluster 
 
 ```sh
 make kind
@@ -28,7 +47,7 @@ make kind
 
 ![make cluster](.images/kind.png)
 
-starts up local cluster with registry on one node. Port-forwarding to host is enabled for the following ports:
+This starts up Kind cluster with local registry. Port-forwarding to host is enabled for the following ports:
 -    80 (proxy)
 -   443 (proxy-https)
 -  8001 (admin-api)
@@ -40,20 +59,24 @@ make kong
 ```
 
 
-# Deploy example-service
+## Deploy example-service
+
 
 ```sh
 make example-service
 curl localhost/example
 ```
 
+Our example service / dummy-api which will be available from `http://localhost/example`
+
 ![example](.images/example-2.png)
 
 
+## Cleanup 
 
-*Delete test-service:* `kubectl delete -f ./local/test-service.yaml`
+Deleting test-service: `kubectl delete -f ./local/test-service.yaml`
 
-*Cleanup/Destroy local environment:* `make destroy`
+Cleanup/Destroy local environment: `make destroy`
 
 ![make destroy](.images/destroy.png)
 
@@ -134,7 +157,7 @@ After trying to curl our test-service more than the treshold (5 per minute), we 
 
 ![rate-limiting-example](.images/rate-limiting-example.png)
 
-### Cors
+### Example: Cors
 
 https://docs.konghq.com/hub/kong-inc/rate-limiting/configuration/
 
