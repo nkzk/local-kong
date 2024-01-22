@@ -1,0 +1,50 @@
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: "100%"
+    maxUnavailable: "100%"
+enterprise:
+  enabled: false
+  vitals:
+    enabled: false
+  portal:
+    enabled: false
+  rbac:
+    enabled: false
+
+manager:
+  enabled: true
+  type: NodePort
+  tls:
+    enabled: false
+  http:
+    enabled: true
+    nodePort: 30000
+admin:
+  enabled: true
+  type: ClusterIP
+  tls:
+    enabled: false
+  http:
+    enabled: true
+    servicePort: 8001
+    containerPort: 8001
+    hostPort: 8001
+portal:
+  enabled: false
+
+portalapi:
+  enabled: false
+
+env:
+  database: "off"
+
+ingressController:
+  enabled: true
+
+proxy:
+  # Enable creating a Kubernetes service for the proxy
+  enabled: true
+  type: ClusterIP
+  http:
+    hostPort: 80
