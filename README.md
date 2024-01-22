@@ -1,6 +1,6 @@
 # Introduction
 
-This repository covers how to quickly get Kong up and running in a local kubernetes cluster, and how to configure your services with various plugins.
+This repository provides scripts, manifests, and guides to quickly get Kong and a test-service up and running in a local kubernetes cluster. The guide then covers how to configure the test-service with various plugins.
 
 # Requirements:
   - [Docker](https://docs.docker.com/desktop/install)
