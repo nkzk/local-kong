@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ $(kubectl config current-context) -eq "kind-kind" ]]
 then
     helm repo add kong https://charts.konghq.com
