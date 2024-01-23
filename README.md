@@ -74,10 +74,15 @@ Our example service / dummy-api which will be available from `http://localhost/e
 
 ## Cleanup 
 
-Deleting test-service: `kubectl delete -f ./local/test-service.yaml`
+Deleting test-service: 
+```sh
+`kubectl delete -f ./local/test-service.yaml`
+```
 
-Cleanup/Destroy local environment: `make destroy`
-
+Cleanup/Destroy local environment: 
+```sh
+`make destroy`
+```
 ![make destroy](.images/destroy.png)
 
 
