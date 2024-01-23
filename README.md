@@ -33,11 +33,11 @@ This repository provides scripts, manifests, and guides to quickly get Kong and 
 
 
 # Set up local environment
-**Note:** All `make` commands are ran from root directory.
+**Note:** All `make` commands are ran from root directory of this repository, make sure to clone it to your local environment. 
 
 ## Install requirements
 
-Start by installing the [Requirements](#requirements)
+Start by installing the [Requirements](#requirements). 
 
 ## Create kind cluster 
 
@@ -58,9 +58,7 @@ This starts up Kind cluster with local registry. Port-forwarding to host is enab
 make kong
 ```
 
-
 ## Deploy example-service
-
 
 ```sh
 make example-service
@@ -71,26 +69,11 @@ Our example service / dummy-api which will be available from `http://localhost/e
 
 ![example](.images/example-2.png)
 
-
-## Cleanup 
-
-Deleting test-service: 
-```sh
-`kubectl delete -f ./local/test-service.yaml`
-```
-
-Cleanup/Destroy local environment: 
-```sh
-`make destroy`
-```
-![make destroy](.images/destroy.png)
-
-
 # Guide
 
 ## The Ingress resource
 
-We will assume some familiarity with kubernetes resources like Deployment, Services, and Pods -  which are the basic blocks to get your application up and running in a kubernetes environment.
+We will assume you have some familiarity with kubernetes resources like Deployment, Services, and Pods - which are the basic blocks to get your application up and running in a kubernetes environment.
 
 When your application is up and running, the next step is to configure an `Ingress` to route traffic into your service.
 
@@ -295,6 +278,19 @@ spec:
 ```
 
 Example above would make kong listen to TCP traffic on port 31234, and send it to postgres-service on port 5432.
+
+## Cleanup your local environment
+
+Deleting test-service: 
+```sh
+`kubectl delete -f ./local/test-service.yaml`
+```
+
+Cleanup/Destroy local environment: 
+```sh
+`make destroy`
+```
+![make destroy](.images/destroy.png)
 
 # References:
   - [Kong Docs](https://docs.konghq.com)
