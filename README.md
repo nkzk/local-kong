@@ -3,7 +3,7 @@
 This repository provides scripts, manifests, and guides to quickly get Kong and a test-service up and running in a local kubernetes cluster. The guide then covers how to configure the test-service with various plugins.
 
 # Requirements:
-  - [Docker](https://docs.docker.com/desktop/install)
+  - [Docker](https://docs.docker.com/desktop)
   - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installing-with-a-package-manager)
   - [Ctlptl](https://github.com/tilt-dev/ctlptl)
   - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
