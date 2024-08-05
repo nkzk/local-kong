@@ -7,3 +7,4 @@ kubectl wait --namespace kong \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/instance=kong \
   --timeout=90s
+kubectl apply -f ./local/ingressclass.yaml

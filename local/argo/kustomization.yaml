@@ -7,3 +7,5 @@ namespace: argocd
 
 patchesStrategicMerge:
   - configmap.yaml
+
+
