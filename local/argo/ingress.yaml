@@ -7,6 +7,7 @@ metadata:
     app.kubernetes.io/component: server-ingress
     app.kubernetes.io/part-of: argocd
 spec:
+  ingressClassName: kong
   rules:
   - host: argocd.localhost
     http:

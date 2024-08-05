@@ -8,7 +8,7 @@ COLOR=$BLUE
 STAR='\U1F31F'
 
 printf "\n${STAR}${COLOR}installing argocd...${NORMAL}\n"
-kubectl apply -k argocd
+kubectl apply -k ./local/argo
 
 printf "\n${STAR}${COLOR}waiting for argocd to get ready...${NORMAL}\n"
 kubectl wait -n argocd \
